@@ -1,3 +1,6 @@
 [submodule "google-cloudevents"]
 	path = google-cloudevents
 	url = https://github.com/googleapis/google-cloudevents.git
+[submodule "googleapis"]
+	path = googleapis
+	url = https://github.com/googleapis/googleapis.git
