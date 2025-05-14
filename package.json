@@ -1,0 +1,33 @@
+{
+    "name": "@skunkteam/google-cloudevents-firestore",
+    "version": "1.0.0",
+    "description": "Javascript and Typescript classes for Google Cloud Events for Firestore.",
+    "keywords": [
+        "google",
+        "cloud events",
+        "firestore",
+        "cloudevents"
+    ],
+    "type": "module",
+    "main": "index.js",
+    "types": "index.d.ts",
+    "scripts": {
+        "prepare": "npm run update-submodules && npm run generate",
+        "update-submodules": "git submodule update --init --recursive --remote",
+        "generate": "./generate.sh",
+        "test": "node --experimental-strip-types --disable-warning=ExperimentalWarning --test **/*.test.ts"
+    },
+    "author": "Skunk Team",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/skunkteam/google-cloudevents-firestore.git"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "protobufjs": "^7.5.1"
+    },
+    "devDependencies": {
+        "protobufjs-cli": "^1.1.3",
+        "typescript": "^5.8.3"
+    }
+}
