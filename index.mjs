@@ -1,22 +1,20 @@
 /*eslint-disable block-scoped-var, id-length, no-control-regex, no-magic-numbers, no-prototype-builtins, no-redeclare, no-shadow, no-var, sort-vars*/
-"use strict";
-
-var $protobuf = require("protobufjs/minimal");
+import $protobuf from "protobufjs/minimal.js";
 
 // Common aliases
-var $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
+const $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
 
 // Exported root namespace
-var $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
+const $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
 
-$root.google = (function() {
+export const google = $root.google = (() => {
 
     /**
      * Namespace google.
      * @exports google
      * @namespace
      */
-    var google = {};
+    const google = {};
 
     google.protobuf = (function() {
 
@@ -25,7 +23,7 @@ $root.google = (function() {
          * @memberof google
          * @namespace
          */
-        var protobuf = {};
+        const protobuf = {};
 
         protobuf.Struct = (function() {
 
@@ -47,7 +45,7 @@ $root.google = (function() {
             function Struct(properties) {
                 this.fields = {};
                 if (properties)
-                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
@@ -85,7 +83,7 @@ $root.google = (function() {
                 if (!writer)
                     writer = $Writer.create();
                 if (message.fields != null && Object.hasOwnProperty.call(message, "fields"))
-                    for (var keys = Object.keys(message.fields), i = 0; i < keys.length; ++i) {
+                    for (let keys = Object.keys(message.fields), i = 0; i < keys.length; ++i) {
                         writer.uint32(/* id 1, wireType 2 =*/10).fork().uint32(/* id 1, wireType 2 =*/10).string(keys[i]);
                         $root.google.protobuf.Value.encode(message.fields[keys[i]], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim().ldelim();
                     }
@@ -119,20 +117,20 @@ $root.google = (function() {
             Struct.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
-                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.Struct(), key, value;
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.Struct(), key, value;
                 while (reader.pos < end) {
-                    var tag = reader.uint32();
+                    let tag = reader.uint32();
                     if (tag === error)
                         break;
                     switch (tag >>> 3) {
                     case 1: {
                             if (message.fields === $util.emptyObject)
                                 message.fields = {};
-                            var end2 = reader.uint32() + reader.pos;
+                            let end2 = reader.uint32() + reader.pos;
                             key = "";
                             value = null;
                             while (reader.pos < end2) {
-                                var tag2 = reader.uint32();
+                                let tag2 = reader.uint32();
                                 switch (tag2 >>> 3) {
                                 case 1:
                                     key = reader.string();
@@ -186,9 +184,9 @@ $root.google = (function() {
                 if (message.fields != null && message.hasOwnProperty("fields")) {
                     if (!$util.isObject(message.fields))
                         return "fields: object expected";
-                    var key = Object.keys(message.fields);
-                    for (var i = 0; i < key.length; ++i) {
-                        var error = $root.google.protobuf.Value.verify(message.fields[key[i]]);
+                    let key = Object.keys(message.fields);
+                    for (let i = 0; i < key.length; ++i) {
+                        let error = $root.google.protobuf.Value.verify(message.fields[key[i]]);
                         if (error)
                             return "fields." + error;
                     }
@@ -207,12 +205,12 @@ $root.google = (function() {
             Struct.fromObject = function fromObject(object) {
                 if (object instanceof $root.google.protobuf.Struct)
                     return object;
-                var message = new $root.google.protobuf.Struct();
+                let message = new $root.google.protobuf.Struct();
                 if (object.fields) {
                     if (typeof object.fields !== "object")
                         throw TypeError(".google.protobuf.Struct.fields: object expected");
                     message.fields = {};
-                    for (var keys = Object.keys(object.fields), i = 0; i < keys.length; ++i) {
+                    for (let keys = Object.keys(object.fields), i = 0; i < keys.length; ++i) {
                         if (typeof object.fields[keys[i]] !== "object")
                             throw TypeError(".google.protobuf.Struct.fields: object expected");
                         message.fields[keys[i]] = $root.google.protobuf.Value.fromObject(object.fields[keys[i]]);
@@ -233,13 +231,13 @@ $root.google = (function() {
             Struct.toObject = function toObject(message, options) {
                 if (!options)
                     options = {};
-                var object = {};
+                let object = {};
                 if (options.objects || options.defaults)
                     object.fields = {};
-                var keys2;
+                let keys2;
                 if (message.fields && (keys2 = Object.keys(message.fields)).length) {
                     object.fields = {};
-                    for (var j = 0; j < keys2.length; ++j)
+                    for (let j = 0; j < keys2.length; ++j)
                         object.fields[keys2[j]] = $root.google.protobuf.Value.toObject(message.fields[keys2[j]], options);
                 }
                 return object;
@@ -298,7 +296,7 @@ $root.google = (function() {
              */
             function Value(properties) {
                 if (properties)
-                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
@@ -352,7 +350,7 @@ $root.google = (function() {
             Value.prototype.listValue = null;
 
             // OneOf field names bound to virtual getters and setters
-            var $oneOfFields;
+            let $oneOfFields;
 
             /**
              * Value kind.
@@ -431,9 +429,9 @@ $root.google = (function() {
             Value.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
-                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.Value();
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.Value();
                 while (reader.pos < end) {
-                    var tag = reader.uint32();
+                    let tag = reader.uint32();
                     if (tag === error)
                         break;
                     switch (tag >>> 3) {
@@ -496,7 +494,7 @@ $root.google = (function() {
             Value.verify = function verify(message) {
                 if (typeof message !== "object" || message === null)
                     return "object expected";
-                var properties = {};
+                let properties = {};
                 if (message.nullValue != null && message.hasOwnProperty("nullValue")) {
                     properties.kind = 1;
                     switch (message.nullValue) {
@@ -532,7 +530,7 @@ $root.google = (function() {
                         return "kind: multiple values";
                     properties.kind = 1;
                     {
-                        var error = $root.google.protobuf.Struct.verify(message.structValue);
+                        let error = $root.google.protobuf.Struct.verify(message.structValue);
                         if (error)
                             return "structValue." + error;
                     }
@@ -542,7 +540,7 @@ $root.google = (function() {
                         return "kind: multiple values";
                     properties.kind = 1;
                     {
-                        var error = $root.google.protobuf.ListValue.verify(message.listValue);
+                        let error = $root.google.protobuf.ListValue.verify(message.listValue);
                         if (error)
                             return "listValue." + error;
                     }
@@ -561,7 +559,7 @@ $root.google = (function() {
             Value.fromObject = function fromObject(object) {
                 if (object instanceof $root.google.protobuf.Value)
                     return object;
-                var message = new $root.google.protobuf.Value();
+                let message = new $root.google.protobuf.Value();
                 switch (object.nullValue) {
                 default:
                     if (typeof object.nullValue === "number") {
@@ -605,7 +603,7 @@ $root.google = (function() {
             Value.toObject = function toObject(message, options) {
                 if (!options)
                     options = {};
-                var object = {};
+                let object = {};
                 if (message.nullValue != null && message.hasOwnProperty("nullValue")) {
                     object.nullValue = options.enums === String ? $root.google.protobuf.NullValue[message.nullValue] === undefined ? message.nullValue : $root.google.protobuf.NullValue[message.nullValue] : message.nullValue;
                     if (options.oneofs)
@@ -675,7 +673,7 @@ $root.google = (function() {
          * @property {number} NULL_VALUE=0 NULL_VALUE value
          */
         protobuf.NullValue = (function() {
-            var valuesById = {}, values = Object.create(valuesById);
+            const valuesById = {}, values = Object.create(valuesById);
             values[valuesById[0] = "NULL_VALUE"] = 0;
             return values;
         })();
@@ -700,7 +698,7 @@ $root.google = (function() {
             function ListValue(properties) {
                 this.values = [];
                 if (properties)
-                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
@@ -738,7 +736,7 @@ $root.google = (function() {
                 if (!writer)
                     writer = $Writer.create();
                 if (message.values != null && message.values.length)
-                    for (var i = 0; i < message.values.length; ++i)
+                    for (let i = 0; i < message.values.length; ++i)
                         $root.google.protobuf.Value.encode(message.values[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
                 return writer;
             };
@@ -770,9 +768,9 @@ $root.google = (function() {
             ListValue.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
-                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.ListValue();
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.ListValue();
                 while (reader.pos < end) {
-                    var tag = reader.uint32();
+                    let tag = reader.uint32();
                     if (tag === error)
                         break;
                     switch (tag >>> 3) {
@@ -820,8 +818,8 @@ $root.google = (function() {
                 if (message.values != null && message.hasOwnProperty("values")) {
                     if (!Array.isArray(message.values))
                         return "values: array expected";
-                    for (var i = 0; i < message.values.length; ++i) {
-                        var error = $root.google.protobuf.Value.verify(message.values[i]);
+                    for (let i = 0; i < message.values.length; ++i) {
+                        let error = $root.google.protobuf.Value.verify(message.values[i]);
                         if (error)
                             return "values." + error;
                     }
@@ -840,12 +838,12 @@ $root.google = (function() {
             ListValue.fromObject = function fromObject(object) {
                 if (object instanceof $root.google.protobuf.ListValue)
                     return object;
-                var message = new $root.google.protobuf.ListValue();
+                let message = new $root.google.protobuf.ListValue();
                 if (object.values) {
                     if (!Array.isArray(object.values))
                         throw TypeError(".google.protobuf.ListValue.values: array expected");
                     message.values = [];
-                    for (var i = 0; i < object.values.length; ++i) {
+                    for (let i = 0; i < object.values.length; ++i) {
                         if (typeof object.values[i] !== "object")
                             throw TypeError(".google.protobuf.ListValue.values: object expected");
                         message.values[i] = $root.google.protobuf.Value.fromObject(object.values[i]);
@@ -866,12 +864,12 @@ $root.google = (function() {
             ListValue.toObject = function toObject(message, options) {
                 if (!options)
                     options = {};
-                var object = {};
+                let object = {};
                 if (options.arrays || options.defaults)
                     object.values = [];
                 if (message.values && message.values.length) {
                     object.values = [];
-                    for (var j = 0; j < message.values.length; ++j)
+                    for (let j = 0; j < message.values.length; ++j)
                         object.values[j] = $root.google.protobuf.Value.toObject(message.values[j], options);
                 }
                 return object;
@@ -926,7 +924,7 @@ $root.google = (function() {
              */
             function Timestamp(properties) {
                 if (properties)
-                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
@@ -1005,9 +1003,9 @@ $root.google = (function() {
             Timestamp.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
-                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.Timestamp();
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.Timestamp();
                 while (reader.pos < end) {
-                    var tag = reader.uint32();
+                    let tag = reader.uint32();
                     if (tag === error)
                         break;
                     switch (tag >>> 3) {
@@ -1074,7 +1072,7 @@ $root.google = (function() {
             Timestamp.fromObject = function fromObject(object) {
                 if (object instanceof $root.google.protobuf.Timestamp)
                     return object;
-                var message = new $root.google.protobuf.Timestamp();
+                let message = new $root.google.protobuf.Timestamp();
                 if (object.seconds != null)
                     if ($util.Long)
                         (message.seconds = $util.Long.fromValue(object.seconds)).unsigned = false;
@@ -1101,10 +1099,10 @@ $root.google = (function() {
             Timestamp.toObject = function toObject(message, options) {
                 if (!options)
                     options = {};
-                var object = {};
+                let object = {};
                 if (options.defaults) {
                     if ($util.Long) {
-                        var long = new $util.Long(0, 0, false);
+                        let long = new $util.Long(0, 0, false);
                         object.seconds = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
                     } else
                         object.seconds = options.longs === String ? "0" : 0;
@@ -1159,7 +1157,7 @@ $root.google = (function() {
          * @memberof google
          * @namespace
          */
-        var events = {};
+        const events = {};
 
         events.cloud = (function() {
 
@@ -1168,7 +1166,7 @@ $root.google = (function() {
              * @memberof google.events
              * @namespace
              */
-            var cloud = {};
+            const cloud = {};
 
             cloud.firestore = (function() {
 
@@ -1177,7 +1175,7 @@ $root.google = (function() {
                  * @memberof google.events.cloud
                  * @namespace
                  */
-                var firestore = {};
+                const firestore = {};
 
                 firestore.v1 = (function() {
 
@@ -1186,7 +1184,7 @@ $root.google = (function() {
                      * @memberof google.events.cloud.firestore
                      * @namespace
                      */
-                    var v1 = {};
+                    const v1 = {};
 
                     v1.DocumentEventData = (function() {
 
@@ -1209,7 +1207,7 @@ $root.google = (function() {
                          */
                         function DocumentEventData(properties) {
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -1298,9 +1296,9 @@ $root.google = (function() {
                         DocumentEventData.decode = function decode(reader, length, error) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.events.cloud.firestore.v1.DocumentEventData();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.events.cloud.firestore.v1.DocumentEventData();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 if (tag === error)
                                     break;
                                 switch (tag >>> 3) {
@@ -1352,17 +1350,17 @@ $root.google = (function() {
                             if (typeof message !== "object" || message === null)
                                 return "object expected";
                             if (message.value != null && message.hasOwnProperty("value")) {
-                                var error = $root.google.events.cloud.firestore.v1.Document.verify(message.value);
+                                let error = $root.google.events.cloud.firestore.v1.Document.verify(message.value);
                                 if (error)
                                     return "value." + error;
                             }
                             if (message.oldValue != null && message.hasOwnProperty("oldValue")) {
-                                var error = $root.google.events.cloud.firestore.v1.Document.verify(message.oldValue);
+                                let error = $root.google.events.cloud.firestore.v1.Document.verify(message.oldValue);
                                 if (error)
                                     return "oldValue." + error;
                             }
                             if (message.updateMask != null && message.hasOwnProperty("updateMask")) {
-                                var error = $root.google.events.cloud.firestore.v1.DocumentMask.verify(message.updateMask);
+                                let error = $root.google.events.cloud.firestore.v1.DocumentMask.verify(message.updateMask);
                                 if (error)
                                     return "updateMask." + error;
                             }
@@ -1380,7 +1378,7 @@ $root.google = (function() {
                         DocumentEventData.fromObject = function fromObject(object) {
                             if (object instanceof $root.google.events.cloud.firestore.v1.DocumentEventData)
                                 return object;
-                            var message = new $root.google.events.cloud.firestore.v1.DocumentEventData();
+                            let message = new $root.google.events.cloud.firestore.v1.DocumentEventData();
                             if (object.value != null) {
                                 if (typeof object.value !== "object")
                                     throw TypeError(".google.events.cloud.firestore.v1.DocumentEventData.value: object expected");
@@ -1411,7 +1409,7 @@ $root.google = (function() {
                         DocumentEventData.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.defaults) {
                                 object.value = null;
                                 object.oldValue = null;
@@ -1475,7 +1473,7 @@ $root.google = (function() {
                         function DocumentMask(properties) {
                             this.fieldPaths = [];
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -1513,7 +1511,7 @@ $root.google = (function() {
                             if (!writer)
                                 writer = $Writer.create();
                             if (message.fieldPaths != null && message.fieldPaths.length)
-                                for (var i = 0; i < message.fieldPaths.length; ++i)
+                                for (let i = 0; i < message.fieldPaths.length; ++i)
                                     writer.uint32(/* id 1, wireType 2 =*/10).string(message.fieldPaths[i]);
                             return writer;
                         };
@@ -1545,9 +1543,9 @@ $root.google = (function() {
                         DocumentMask.decode = function decode(reader, length, error) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.events.cloud.firestore.v1.DocumentMask();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.events.cloud.firestore.v1.DocumentMask();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 if (tag === error)
                                     break;
                                 switch (tag >>> 3) {
@@ -1595,7 +1593,7 @@ $root.google = (function() {
                             if (message.fieldPaths != null && message.hasOwnProperty("fieldPaths")) {
                                 if (!Array.isArray(message.fieldPaths))
                                     return "fieldPaths: array expected";
-                                for (var i = 0; i < message.fieldPaths.length; ++i)
+                                for (let i = 0; i < message.fieldPaths.length; ++i)
                                     if (!$util.isString(message.fieldPaths[i]))
                                         return "fieldPaths: string[] expected";
                             }
@@ -1613,12 +1611,12 @@ $root.google = (function() {
                         DocumentMask.fromObject = function fromObject(object) {
                             if (object instanceof $root.google.events.cloud.firestore.v1.DocumentMask)
                                 return object;
-                            var message = new $root.google.events.cloud.firestore.v1.DocumentMask();
+                            let message = new $root.google.events.cloud.firestore.v1.DocumentMask();
                             if (object.fieldPaths) {
                                 if (!Array.isArray(object.fieldPaths))
                                     throw TypeError(".google.events.cloud.firestore.v1.DocumentMask.fieldPaths: array expected");
                                 message.fieldPaths = [];
-                                for (var i = 0; i < object.fieldPaths.length; ++i)
+                                for (let i = 0; i < object.fieldPaths.length; ++i)
                                     message.fieldPaths[i] = String(object.fieldPaths[i]);
                             }
                             return message;
@@ -1636,12 +1634,12 @@ $root.google = (function() {
                         DocumentMask.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.arrays || options.defaults)
                                 object.fieldPaths = [];
                             if (message.fieldPaths && message.fieldPaths.length) {
                                 object.fieldPaths = [];
-                                for (var j = 0; j < message.fieldPaths.length; ++j)
+                                for (let j = 0; j < message.fieldPaths.length; ++j)
                                     object.fieldPaths[j] = message.fieldPaths[j];
                             }
                             return object;
@@ -1699,7 +1697,7 @@ $root.google = (function() {
                         function Document(properties) {
                             this.fields = {};
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -1763,7 +1761,7 @@ $root.google = (function() {
                             if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                                 writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
                             if (message.fields != null && Object.hasOwnProperty.call(message, "fields"))
-                                for (var keys = Object.keys(message.fields), i = 0; i < keys.length; ++i) {
+                                for (let keys = Object.keys(message.fields), i = 0; i < keys.length; ++i) {
                                     writer.uint32(/* id 2, wireType 2 =*/18).fork().uint32(/* id 1, wireType 2 =*/10).string(keys[i]);
                                     $root.google.events.cloud.firestore.v1.Value.encode(message.fields[keys[i]], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim().ldelim();
                                 }
@@ -1801,9 +1799,9 @@ $root.google = (function() {
                         Document.decode = function decode(reader, length, error) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.events.cloud.firestore.v1.Document(), key, value;
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.events.cloud.firestore.v1.Document(), key, value;
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 if (tag === error)
                                     break;
                                 switch (tag >>> 3) {
@@ -1814,11 +1812,11 @@ $root.google = (function() {
                                 case 2: {
                                         if (message.fields === $util.emptyObject)
                                             message.fields = {};
-                                        var end2 = reader.uint32() + reader.pos;
+                                        let end2 = reader.uint32() + reader.pos;
                                         key = "";
                                         value = null;
                                         while (reader.pos < end2) {
-                                            var tag2 = reader.uint32();
+                                            let tag2 = reader.uint32();
                                             switch (tag2 >>> 3) {
                                             case 1:
                                                 key = reader.string();
@@ -1883,20 +1881,20 @@ $root.google = (function() {
                             if (message.fields != null && message.hasOwnProperty("fields")) {
                                 if (!$util.isObject(message.fields))
                                     return "fields: object expected";
-                                var key = Object.keys(message.fields);
-                                for (var i = 0; i < key.length; ++i) {
-                                    var error = $root.google.events.cloud.firestore.v1.Value.verify(message.fields[key[i]]);
+                                let key = Object.keys(message.fields);
+                                for (let i = 0; i < key.length; ++i) {
+                                    let error = $root.google.events.cloud.firestore.v1.Value.verify(message.fields[key[i]]);
                                     if (error)
                                         return "fields." + error;
                                 }
                             }
                             if (message.createTime != null && message.hasOwnProperty("createTime")) {
-                                var error = $root.google.protobuf.Timestamp.verify(message.createTime);
+                                let error = $root.google.protobuf.Timestamp.verify(message.createTime);
                                 if (error)
                                     return "createTime." + error;
                             }
                             if (message.updateTime != null && message.hasOwnProperty("updateTime")) {
-                                var error = $root.google.protobuf.Timestamp.verify(message.updateTime);
+                                let error = $root.google.protobuf.Timestamp.verify(message.updateTime);
                                 if (error)
                                     return "updateTime." + error;
                             }
@@ -1914,14 +1912,14 @@ $root.google = (function() {
                         Document.fromObject = function fromObject(object) {
                             if (object instanceof $root.google.events.cloud.firestore.v1.Document)
                                 return object;
-                            var message = new $root.google.events.cloud.firestore.v1.Document();
+                            let message = new $root.google.events.cloud.firestore.v1.Document();
                             if (object.name != null)
                                 message.name = String(object.name);
                             if (object.fields) {
                                 if (typeof object.fields !== "object")
                                     throw TypeError(".google.events.cloud.firestore.v1.Document.fields: object expected");
                                 message.fields = {};
-                                for (var keys = Object.keys(object.fields), i = 0; i < keys.length; ++i) {
+                                for (let keys = Object.keys(object.fields), i = 0; i < keys.length; ++i) {
                                     if (typeof object.fields[keys[i]] !== "object")
                                         throw TypeError(".google.events.cloud.firestore.v1.Document.fields: object expected");
                                     message.fields[keys[i]] = $root.google.events.cloud.firestore.v1.Value.fromObject(object.fields[keys[i]]);
@@ -1952,7 +1950,7 @@ $root.google = (function() {
                         Document.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.objects || options.defaults)
                                 object.fields = {};
                             if (options.defaults) {
@@ -1962,10 +1960,10 @@ $root.google = (function() {
                             }
                             if (message.name != null && message.hasOwnProperty("name"))
                                 object.name = message.name;
-                            var keys2;
+                            let keys2;
                             if (message.fields && (keys2 = Object.keys(message.fields)).length) {
                                 object.fields = {};
-                                for (var j = 0; j < keys2.length; ++j)
+                                for (let j = 0; j < keys2.length; ++j)
                                     object.fields[keys2[j]] = $root.google.events.cloud.firestore.v1.Value.toObject(message.fields[keys2[j]], options);
                             }
                             if (message.createTime != null && message.hasOwnProperty("createTime"))
@@ -2033,7 +2031,7 @@ $root.google = (function() {
                          */
                         function Value(properties) {
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -2127,7 +2125,7 @@ $root.google = (function() {
                         Value.prototype.mapValue = null;
 
                         // OneOf field names bound to virtual getters and setters
-                        var $oneOfFields;
+                        let $oneOfFields;
 
                         /**
                          * Value valueType.
@@ -2216,9 +2214,9 @@ $root.google = (function() {
                         Value.decode = function decode(reader, length, error) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.events.cloud.firestore.v1.Value();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.events.cloud.firestore.v1.Value();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 if (tag === error)
                                     break;
                                 switch (tag >>> 3) {
@@ -2301,7 +2299,7 @@ $root.google = (function() {
                         Value.verify = function verify(message) {
                             if (typeof message !== "object" || message === null)
                                 return "object expected";
-                            var properties = {};
+                            let properties = {};
                             if (message.nullValue != null && message.hasOwnProperty("nullValue")) {
                                 properties.valueType = 1;
                                 switch (message.nullValue) {
@@ -2337,7 +2335,7 @@ $root.google = (function() {
                                     return "valueType: multiple values";
                                 properties.valueType = 1;
                                 {
-                                    var error = $root.google.protobuf.Timestamp.verify(message.timestampValue);
+                                    let error = $root.google.protobuf.Timestamp.verify(message.timestampValue);
                                     if (error)
                                         return "timestampValue." + error;
                                 }
@@ -2368,7 +2366,7 @@ $root.google = (function() {
                                     return "valueType: multiple values";
                                 properties.valueType = 1;
                                 {
-                                    var error = $root.google.type.LatLng.verify(message.geoPointValue);
+                                    let error = $root.google.type.LatLng.verify(message.geoPointValue);
                                     if (error)
                                         return "geoPointValue." + error;
                                 }
@@ -2378,7 +2376,7 @@ $root.google = (function() {
                                     return "valueType: multiple values";
                                 properties.valueType = 1;
                                 {
-                                    var error = $root.google.events.cloud.firestore.v1.ArrayValue.verify(message.arrayValue);
+                                    let error = $root.google.events.cloud.firestore.v1.ArrayValue.verify(message.arrayValue);
                                     if (error)
                                         return "arrayValue." + error;
                                 }
@@ -2388,7 +2386,7 @@ $root.google = (function() {
                                     return "valueType: multiple values";
                                 properties.valueType = 1;
                                 {
-                                    var error = $root.google.events.cloud.firestore.v1.MapValue.verify(message.mapValue);
+                                    let error = $root.google.events.cloud.firestore.v1.MapValue.verify(message.mapValue);
                                     if (error)
                                         return "mapValue." + error;
                                 }
@@ -2407,7 +2405,7 @@ $root.google = (function() {
                         Value.fromObject = function fromObject(object) {
                             if (object instanceof $root.google.events.cloud.firestore.v1.Value)
                                 return object;
-                            var message = new $root.google.events.cloud.firestore.v1.Value();
+                            let message = new $root.google.events.cloud.firestore.v1.Value();
                             switch (object.nullValue) {
                             default:
                                 if (typeof object.nullValue === "number") {
@@ -2477,7 +2475,7 @@ $root.google = (function() {
                         Value.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (message.booleanValue != null && message.hasOwnProperty("booleanValue")) {
                                 object.booleanValue = message.booleanValue;
                                 if (options.oneofs)
@@ -2588,7 +2586,7 @@ $root.google = (function() {
                         function ArrayValue(properties) {
                             this.values = [];
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -2626,7 +2624,7 @@ $root.google = (function() {
                             if (!writer)
                                 writer = $Writer.create();
                             if (message.values != null && message.values.length)
-                                for (var i = 0; i < message.values.length; ++i)
+                                for (let i = 0; i < message.values.length; ++i)
                                     $root.google.events.cloud.firestore.v1.Value.encode(message.values[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
                             return writer;
                         };
@@ -2658,9 +2656,9 @@ $root.google = (function() {
                         ArrayValue.decode = function decode(reader, length, error) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.events.cloud.firestore.v1.ArrayValue();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.events.cloud.firestore.v1.ArrayValue();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 if (tag === error)
                                     break;
                                 switch (tag >>> 3) {
@@ -2708,8 +2706,8 @@ $root.google = (function() {
                             if (message.values != null && message.hasOwnProperty("values")) {
                                 if (!Array.isArray(message.values))
                                     return "values: array expected";
-                                for (var i = 0; i < message.values.length; ++i) {
-                                    var error = $root.google.events.cloud.firestore.v1.Value.verify(message.values[i]);
+                                for (let i = 0; i < message.values.length; ++i) {
+                                    let error = $root.google.events.cloud.firestore.v1.Value.verify(message.values[i]);
                                     if (error)
                                         return "values." + error;
                                 }
@@ -2728,12 +2726,12 @@ $root.google = (function() {
                         ArrayValue.fromObject = function fromObject(object) {
                             if (object instanceof $root.google.events.cloud.firestore.v1.ArrayValue)
                                 return object;
-                            var message = new $root.google.events.cloud.firestore.v1.ArrayValue();
+                            let message = new $root.google.events.cloud.firestore.v1.ArrayValue();
                             if (object.values) {
                                 if (!Array.isArray(object.values))
                                     throw TypeError(".google.events.cloud.firestore.v1.ArrayValue.values: array expected");
                                 message.values = [];
-                                for (var i = 0; i < object.values.length; ++i) {
+                                for (let i = 0; i < object.values.length; ++i) {
                                     if (typeof object.values[i] !== "object")
                                         throw TypeError(".google.events.cloud.firestore.v1.ArrayValue.values: object expected");
                                     message.values[i] = $root.google.events.cloud.firestore.v1.Value.fromObject(object.values[i]);
@@ -2754,12 +2752,12 @@ $root.google = (function() {
                         ArrayValue.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.arrays || options.defaults)
                                 object.values = [];
                             if (message.values && message.values.length) {
                                 object.values = [];
-                                for (var j = 0; j < message.values.length; ++j)
+                                for (let j = 0; j < message.values.length; ++j)
                                     object.values[j] = $root.google.events.cloud.firestore.v1.Value.toObject(message.values[j], options);
                             }
                             return object;
@@ -2814,7 +2812,7 @@ $root.google = (function() {
                         function MapValue(properties) {
                             this.fields = {};
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -2852,7 +2850,7 @@ $root.google = (function() {
                             if (!writer)
                                 writer = $Writer.create();
                             if (message.fields != null && Object.hasOwnProperty.call(message, "fields"))
-                                for (var keys = Object.keys(message.fields), i = 0; i < keys.length; ++i) {
+                                for (let keys = Object.keys(message.fields), i = 0; i < keys.length; ++i) {
                                     writer.uint32(/* id 1, wireType 2 =*/10).fork().uint32(/* id 1, wireType 2 =*/10).string(keys[i]);
                                     $root.google.events.cloud.firestore.v1.Value.encode(message.fields[keys[i]], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim().ldelim();
                                 }
@@ -2886,20 +2884,20 @@ $root.google = (function() {
                         MapValue.decode = function decode(reader, length, error) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.events.cloud.firestore.v1.MapValue(), key, value;
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.events.cloud.firestore.v1.MapValue(), key, value;
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 if (tag === error)
                                     break;
                                 switch (tag >>> 3) {
                                 case 1: {
                                         if (message.fields === $util.emptyObject)
                                             message.fields = {};
-                                        var end2 = reader.uint32() + reader.pos;
+                                        let end2 = reader.uint32() + reader.pos;
                                         key = "";
                                         value = null;
                                         while (reader.pos < end2) {
-                                            var tag2 = reader.uint32();
+                                            let tag2 = reader.uint32();
                                             switch (tag2 >>> 3) {
                                             case 1:
                                                 key = reader.string();
@@ -2953,9 +2951,9 @@ $root.google = (function() {
                             if (message.fields != null && message.hasOwnProperty("fields")) {
                                 if (!$util.isObject(message.fields))
                                     return "fields: object expected";
-                                var key = Object.keys(message.fields);
-                                for (var i = 0; i < key.length; ++i) {
-                                    var error = $root.google.events.cloud.firestore.v1.Value.verify(message.fields[key[i]]);
+                                let key = Object.keys(message.fields);
+                                for (let i = 0; i < key.length; ++i) {
+                                    let error = $root.google.events.cloud.firestore.v1.Value.verify(message.fields[key[i]]);
                                     if (error)
                                         return "fields." + error;
                                 }
@@ -2974,12 +2972,12 @@ $root.google = (function() {
                         MapValue.fromObject = function fromObject(object) {
                             if (object instanceof $root.google.events.cloud.firestore.v1.MapValue)
                                 return object;
-                            var message = new $root.google.events.cloud.firestore.v1.MapValue();
+                            let message = new $root.google.events.cloud.firestore.v1.MapValue();
                             if (object.fields) {
                                 if (typeof object.fields !== "object")
                                     throw TypeError(".google.events.cloud.firestore.v1.MapValue.fields: object expected");
                                 message.fields = {};
-                                for (var keys = Object.keys(object.fields), i = 0; i < keys.length; ++i) {
+                                for (let keys = Object.keys(object.fields), i = 0; i < keys.length; ++i) {
                                     if (typeof object.fields[keys[i]] !== "object")
                                         throw TypeError(".google.events.cloud.firestore.v1.MapValue.fields: object expected");
                                     message.fields[keys[i]] = $root.google.events.cloud.firestore.v1.Value.fromObject(object.fields[keys[i]]);
@@ -3000,13 +2998,13 @@ $root.google = (function() {
                         MapValue.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.objects || options.defaults)
                                 object.fields = {};
-                            var keys2;
+                            let keys2;
                             if (message.fields && (keys2 = Object.keys(message.fields)).length) {
                                 object.fields = {};
-                                for (var j = 0; j < keys2.length; ++j)
+                                for (let j = 0; j < keys2.length; ++j)
                                     object.fields[keys2[j]] = $root.google.events.cloud.firestore.v1.Value.toObject(message.fields[keys2[j]], options);
                             }
                             return object;
@@ -3060,7 +3058,7 @@ $root.google = (function() {
          * @memberof google
          * @namespace
          */
-        var type = {};
+        const type = {};
 
         type.LatLng = (function() {
 
@@ -3082,7 +3080,7 @@ $root.google = (function() {
              */
             function LatLng(properties) {
                 if (properties)
-                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
@@ -3161,9 +3159,9 @@ $root.google = (function() {
             LatLng.decode = function decode(reader, length, error) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
-                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.type.LatLng();
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.type.LatLng();
                 while (reader.pos < end) {
-                    var tag = reader.uint32();
+                    let tag = reader.uint32();
                     if (tag === error)
                         break;
                     switch (tag >>> 3) {
@@ -3230,7 +3228,7 @@ $root.google = (function() {
             LatLng.fromObject = function fromObject(object) {
                 if (object instanceof $root.google.type.LatLng)
                     return object;
-                var message = new $root.google.type.LatLng();
+                let message = new $root.google.type.LatLng();
                 if (object.latitude != null)
                     message.latitude = Number(object.latitude);
                 if (object.longitude != null)
@@ -3250,7 +3248,7 @@ $root.google = (function() {
             LatLng.toObject = function toObject(message, options) {
                 if (!options)
                     options = {};
-                var object = {};
+                let object = {};
                 if (options.defaults) {
                     object.latitude = 0;
                     object.longitude = 0;
@@ -3297,4 +3295,4 @@ $root.google = (function() {
     return google;
 })();
 
-module.exports = $root;
+export default $root;

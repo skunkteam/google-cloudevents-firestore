@@ -1,5 +1,7 @@
 *
 !index.js
 !index.d.ts
+!index.mjs
+!index.d.mts
 !package.json
 !README.md
