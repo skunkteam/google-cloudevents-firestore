@@ -13,10 +13,16 @@
     "types": "./index.d.ts",
     "exports": {
         ".": {
-            "types": "./index.d.ts",
-            "import": "./index.mjs",
-            "require": "./index.js"
+            "import": {
+                "types": "./index.d.mts",
+                "default": "./index.mjs"
+            },
+            "require": {
+                "types": "./index.d.ts",
+                "default": "./index.js"
+            }
         }
+    },
     },
     "scripts": {
         "prepare": "npm run update-submodules && npm run generate",
